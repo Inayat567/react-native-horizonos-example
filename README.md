@@ -1,130 +1,208 @@
-# React Native for Meta Horizon OS
+# MirrorMe - AI Self-Reflection & Coaching App
 
-This project demonstrates that **React Native applications can run natively on Meta Horizon OS** with full performance and feature parity. No compromises, no limitations – just the familiar React Native development experience you already know, now available in virtual reality.
+**MirrorMe** is an immersive AI-powered self-reflection and coaching experience designed specifically for **Meta Horizon OS** (Meta Quest 3 and compatible VR devices). Built with React Native, it combines the power of AI with VR to create a unique personal growth platform.
 
-<div align="center">
-  <img src="./screenshot.webp" alt="React Native on Meta Horizon OS" style="max-width: 720px; width: 100%;" />
-</div>
+## ✨ Features
 
-## 🌟 What This Proves
+### 🪞 Mirror Session (Flagship Feature)
+- **Immersive self-reflection** using your Quest's front-facing camera
+- **AI-powered emotional feedback** and motivational guidance
+- **Voice or text input** - choose your preferred mode
+- **Optional AI voice responses** for a fully conversational experience
+- **Session tracking** with MMKV storage
 
-**React Native Works in VR**: This project proves that React Native can be used to build applications for Meta Horizon OS and virtual reality devices like Meta Quest 3. The same framework that powers millions of mobile apps can now power immersive VR experiences.
+### 💬 AI Chat
+- **Thoughtful conversations** with your AI companion
+- **Real-time AI responses** powered by OpenAI GPT-4o-mini
+- **Text-to-speech** integration for voice output
+- **Chat bubble interface** optimized for VR viewing
+- **Persistent chat sessions**
 
-**Zero Performance Compromises**: React Native runs natively on Meta Horizon OS with the same performance characteristics as mobile platforms. Your apps maintain smooth 60fps performance, responsive interactions, and fluid animations in virtual reality.
+### ⚙️ Settings & Customization
+- **Dark/Light mode** toggle (defaults to dark for VR)
+- **AI voice response** control
+- **Haptic feedback** settings
+- **Data management** (clear history, reset onboarding)
+- **Privacy-first** - all data stored locally
 
-**Familiar Development Experience**: If you can build React Native apps for Android or iOS, you can build them for VR. The development workflow, debugging tools, hot reloading, and APIs work exactly the same way.
+### 🎨 VR-Optimized Design
+- **High-contrast UI** for excellent VR legibility
+- **Large typography** (VR-optimized font sizes)
+- **Interactive animations** with haptic feedback
+- **Smooth transitions** and premium aesthetics
+- **Responsive layout** for different screen sizes
 
-**Easy Porting from Mobile**: Existing React Native Android applications can be adapted for Meta Horizon OS with minimal changes. Your components, business logic, and state management patterns transfer directly to VR development.
+## 🛠️ Tech Stack
 
-## 🚀 Technical Capabilities
+- **React Native** 0.82.1
+- **React** 19.2.0
+- **TypeScript** 5.9.3
+- **Zustand** - State management
+- **MMKV** - Fast local storage
+- **OpenAI API** - AI responses (GPT-4o-mini)
+- **React Native Vision Camera** - Camera integration
+- **React Native TTS** - Text-to-speech
+- **React Navigation** - Navigation
+- **React Native Reanimated** - Animations
+- **React Native Gesture Handler** - Touch interactions
 
-**Native Performance**: React Native applications run with native performance on Meta Horizon OS, leveraging the same JavaScript engine and native bridge architecture that powers mobile apps.
-
-**Full API Access**: Complete access to Meta Horizon OS APIs through React Native's native module system. Camera, sensors, controllers, and VR-specific features are all accessible.
-
-**Standard React Native Patterns**: All familiar React Native patterns work in VR – components, hooks, navigation, state management, and third-party libraries function identically.
-
-**Development Tools**: Full support for React Native development tools including Metro bundler and hot reloading in the VR environment.
-
-## 🛠️ Development Setup
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Meta Quest 3 (or compatible Meta Horizon OS device)
-- Meta Horizon OS development environment
-- [React Native development environment](https://reactnative.dev/docs/set-up-your-environment)
+- **Meta Quest 3** or compatible Meta Horizon OS device
+- **Node.js** >= 20
+- **React Native development environment** set up
+- **OpenAI API Key** ([Get one here](https://platform.openai.com/api-keys))
 
 ### Installation
 
-1. **Clone the Repository**
-
+1. **Clone the repository**
    ```bash
-   git clone https://github.com/callstack/react-native-horizonos-example/
-   cd react-native-horizonos-example
+   git clone <your-repo-url>
+   cd MirrorMe-Horizon
    ```
 
-2. **Install Dependencies**
-
+2. **Install dependencies**
    ```bash
-   pnpm install
+   npm install
    ```
 
-3. **Start Development Server**
-
+3. **Configure environment variables**
    ```bash
-   pnpm start
+   cp .env.example .env
+   ```
+   
+   Then edit `.env` and add your OpenAI API key:
+   ```
+   OPENAI_API_KEY=sk-your-actual-key-here
    ```
 
-4. **Deploy to Meta Horizon OS**
-
+4. **Start the Metro bundler**
    ```bash
-   pnpm run quest
+   npm start
    ```
 
-## 📱 Demo Features
+5. **Deploy to Meta Quest**
+   ```bash
+   npm run quest
+   ```
 
-This demo application showcases various React Native capabilities in VR:
+### 🖥️ Running on Android Emulator (No Headset)
 
-- **Camera Integration**: Access to both selfie and passthrough cameras
-- **Audio Playback**: Background music with system notification controls
-- **Link Sharing**: Standard React Native sharing functionality
+If you don't have a Meta Quest device, you can run the app on a standard Android Emulator to test the UI and core logic.
 
-## 🎮 Interaction Methods
+1. **Open Android Studio** and launch the **Virtual Device Manager**.
+2. Create a new device (e.g., Pixel 6) or use an existing one.
+3. Start the emulator.
+4. Run the app:
+   ```bash
+   npm run quest
+   ```
+   *Note: The app will run as a standard 2D Android app. VR-specific features like the immersive environment will not be available, but you can test the Chat, Settings, and Mirror Session (using your webcam).*
 
-React Native apps in Meta Horizon OS support multiple interaction patterns:
+## 📱 Project Structure
 
-- **Meta Quest Controllers**: Traditional VR controller input
-- **Hand Tracking**: Finger-based interaction when enabled
+```
+MirrorMe-Horizon/
+├── src/
+│   ├── components/
+│   │   └── ui/            # Reusable UI components (Box, Text, Button, etc.)
+│   ├── screens/           # App screens
+│   │   ├── OnboardingScreen.tsx
+│   │   ├── HomeScreen.tsx
+│   │   ├── MirrorSessionScreen.tsx
+│   │   ├── AIChatScreen.tsx
+│   │   └── SettingsScreen.tsx
+│   ├── stores/            # Zustand state stores
+│   │   ├── themeStore.ts
+│   │   ├── settingsStore.ts
+│   │   ├── onboardingStore.ts
+│   │   └── sessionStore.ts
+│   ├── services/          # External services
+│   │   ├── openai.ts      # OpenAI integration
+│   │   ├── tts.ts         # Text-to-speech
+│   │   └── storage.ts     # MMKV storage
+│   ├── theme/             # Design system
+│   │   └── theme.ts       # Colors, typography, spacing
+│   ├── types/             # TypeScript definitions
+│   ├── navigation/        # Navigation configuration
+│   └── utils/             # Utilities (haptics, etc.)
+├── .env                   # Environment variables (not in git)
+├── App.tsx               # App entry point
+└── package.json
+```
 
-## 🖥️ Display & Interface
+## 🎮 Usage
 
-React Native applications render as horizontal panels within the Meta Horizon environment, optimized for VR viewing angles and interaction patterns. The same UI components that work on mobile adapt seamlessly to the virtual environment.
+### First Time Setup
+1. On first launch, you'll see the **Onboarding** flow explaining app features
+2. Grant **camera permissions** for Mirror Session
+3. Navigate to **Settings** to customize your experience
 
-## 📦 Third-Party Libraries
+### Mirror Session
+1. Tap "Start Mirror Session" on the home screen
+2. Your front camera will activate
+3. Type or speak your thoughts
+4. Receive AI-powered emotional reflection and guidance
+5. End session when complete
 
-This project leverages several key third-party libraries to provide a rich development experience:
+### AI Chat
+1. Tap "Start AI Chat" on the home screen  
+2. Have a conversation with your AI companion
+3. Messages are saved locally
 
-### Navigation & UI
+## 🔐 Privacy & Data
 
-- **React Navigation**: Complete navigation solution with native stack and gesture support
-- **React Native Screens**: Native screen management for better performance
-- **React Native Safe Area Context**: Safe area handling for different device layouts
+- **All data stored locally** using encrypted MMKV storage
+- **No data sent to external servers** except OpenAI API requests
+- **Camera feed never saved** - only used for live mirror display
+- **Your reflections stay private** on your device
 
-### Animation & Interactions
+## 🎨 Design Philosophy
 
-- **React Native Reanimated**: High-performance animation library with native driver support
-- **React Native Gesture Handler**: Native gesture recognition and handling
-- **React Native Worklets**: JavaScript functions that run on the UI thread
-
-### Media & Camera
-
-- **React Native Vision Camera**: Advanced camera functionality with frame processing
-- **React Native Track Player**: Full-featured audio playback with background support
-- **React Native SVG**: SVG rendering support for scalable graphics
-
-### Icons & Assets
-
-- **Lucide React Native**: Comprehensive icon library with 1000+ icons
-
-### Utilities
-
-- **React Native Restart**: Application restart functionality
-
-## 📚 Learn More
-
-- [Meta Horizon OS Documentation](https://developer.oculus.com/)
-- [React Native Documentation](https://reactnative.dev/docs/getting-started)
-- [Meta Quest Development](https://developer.oculus.com/documentation/)
+MirrorMe follows Meta Horizon's VR design guidelines:
+- **High contrast** for VR readability
+- **Large touch targets** (minimum 48dp)
+- **Comfortable viewing distances**
+- **Minimal head-locked content**
+- **Smooth, non-jarring animations**
+- **Haptic feedback** for interactions
 
 ## 🐛 Troubleshooting
 
-Common development issues and solutions:
+### Camera not working
+- Ensure camera permissions are granted
+- Check that no other app is using the camera
 
-- Meta Quest connection and setup
-- Meta Horizon OS environment configuration
-- React Native dependency management
-- VR-specific debugging techniques
+### AI responses fail
+- Verify your OpenAI API key in `.env`
+- Check internet connection
+- Ensure you have API credits
+
+### App crashes on launch
+- Clear MMKV storage: Settings → Reset All Settings
+- Reinstall the app
+
+## 🗺️ Roadmap
+
+- [ ] Session summaries with AI insights
+- [ ] Voice input for hands-free interaction
+- [ ] Mood tracking over time
+- [ ] Supabase cloud sync (optional)
+- [ ] Guided meditation sessions
+- [ ] Journaling features
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+MIT License - See LICENSE file for details
+
+## 🙏 Acknowledgments
+
+- Built with [React Native for Meta Horizon OS](https://github.com/callstack/react-native-horizonos-example/)
+- Powered by [OpenAI](https://openai.com/)
+- Inspired by the vision of accessible personal growth tools in VR
+
+---
+
+**Made with ❤️ for the Meta Horizon community**

@@ -4,6 +4,7 @@
 
     <!-- react-native-vision-camera -->
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <!-- Passthrough Camera -->
     <uses-permission android:name="horizonos.permission.HEADSET_CAMERA" />

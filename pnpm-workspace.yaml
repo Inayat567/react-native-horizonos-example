@@ -1,0 +1,5 @@
+ignoredBuiltDependencies:
+  - react-native-nitro-modules
+  - unrs-resolver
+onlyBuiltDependencies:
+  - react-native-mmkv
